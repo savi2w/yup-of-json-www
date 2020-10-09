@@ -27,10 +27,10 @@ let make = () => {
     [|jsonSchema|],
   );
 
-  <main className="main">
+  <>
     <div className="row">
       <textarea
-        className="textarea"
+        className="border-right textarea"
         onChange={event => {
           open ReactEvent.Form;
 
@@ -43,5 +43,5 @@ let make = () => {
     <div className="row">
       <textarea className="border-left textarea" readOnly=true value=yupSchema />
     </div>
-  </main>;
+  </>;
 };

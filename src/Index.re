@@ -3,4 +3,4 @@ normalize;
 
 [%bs.raw {|require("./public/styles.css")|}];
 
-ReactDOMRe.renderToElementWithClassName(<App />, "root");
+ReactDOMRe.renderToElementWithClassName(<App />, "main");
