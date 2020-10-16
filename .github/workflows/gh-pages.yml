@@ -24,6 +24,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      - run: npm i -g npm@next-7
       - run: npm install
       - run: npm run build
       - run: npm run webpack
