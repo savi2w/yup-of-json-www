@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "build": "bsb -make-world",
-    "webpack": "NODE_ENV=production webpack"
+    "webpack": "cross-env NODE_ENV=production webpack"
   },
   "author": "Weslen Nascimento <weslenng@outlook.com>",
   "license": "MIT",
@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "bs-platform": "^7.1.1",
+    "cross-env": "^7.0.2",
     "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^1.0.0",
