@@ -2,7 +2,7 @@
 .DS_Store
 .merlin
 .vscode
-/build
+/build/
 /lib/bs/
 /node_modules/
 *.bs.js
