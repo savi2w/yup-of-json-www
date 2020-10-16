@@ -2,7 +2,6 @@ const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const output = path.join(__dirname, "build/");
-const production = process.env.NODE_ENV === "production";
 
 module.exports = {
   devServer: {
@@ -10,7 +9,7 @@ module.exports = {
     port: 3000,
   },
   entry: "./src/Index.bs.js",
-  mode: production ? "production" : "development",
+  mode: process.env.NODE_ENV === "production" ? "production" : "development",
   module: {
     rules: [
       {
