@@ -19,7 +19,7 @@ module.exports = {
     ],
   },
   output: {
-    filename: "main.js",
+    filename: "root.js",
     path: output,
   },
   plugins: [
