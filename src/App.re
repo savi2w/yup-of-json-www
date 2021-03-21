@@ -4,7 +4,7 @@
 let make = () => {
   let (jsonSchema, setJsonSchema) =
     React.useState(() =>
-      "{\n  \"addresses\": {\n    \"raw\": \"Kukuroo Mountain\"\n  },\n  \"age\": 14,\n  \"hunter\": true,\n  \"name\": \"Killua Zoldyck\",\n  \"role\": null,\n  \"tags\": [\n    {\n      \"label\": \"cute\"\n    }\n  ]\n}"
+      "{\n  \"addresses\": {\n    \"raw\": \"Kukuroo Mountain\"\n  },\n  \"age\": 14,\n  \"github\": \"https://github.com/weslenng\",\n  \"hunter\": true,\n  \"name\": \"Killua Zoldyck\",\n  \"role\": null,\n  \"tags\": [\n    {\n      \"label\": \"cute\"\n    }\n  ]\n}"
     );
 
   let (yupSchema, setYupSchema) = React.useState(() => "Killua <3");
