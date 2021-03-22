@@ -1,6 +1,6 @@
 # of JSON
 
-[![gh-pages](https://github.com/weslenng-labs/yup-of-json-web/workflows/gh-pages/badge.svg?branch=master)](https://github.com/weslenng-labs/yup-of-json-web/actions)
+Hosted on Cloudflare because GitHub Pages is lamentable
 
 ## License
 

@@ -1,7 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const output = path.join(__dirname, "build/");
+const output = path.join(__dirname, "build");
 
 module.exports = {
   devServer: {
@@ -19,14 +19,14 @@ module.exports = {
     ],
   },
   output: {
-    filename: "root.js",
+    filename: "Index.bs.js",
     path: output,
   },
   plugins: [
     new HtmlWebpackPlugin({
-      favicon: "./src/public/favicon.ico",
+      favicon: "./public/favicon.ico",
       inject: false,
-      template: "./src/public/index.html",
+      template: "./public/index.html",
     }),
   ],
 };
