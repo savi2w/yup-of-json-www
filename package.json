@@ -1,11 +1,11 @@
 {
-  "name": "yup-of-json-weslenng-dev",
+  "name": "yup-of-json-omppye-dev",
   "version": "0.1.0",
   "scripts": {
     "bsb-watch": "bsb -make-world -w",
     "webpack": "webpack serve"
   },
-  "author": "Weslen Guerreiro <weslenng@outlook.com>",
+  "author": "Weslen Guerreiro <omppye@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "normalize.css": "^8.0.1",
