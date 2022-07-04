@@ -1,6 +1,6 @@
-# of JSON
+# Y of JSON
 
-Hosted on Cloudflare because GitHub Pages is lamentable
+Web application for omppye-tech/yup-of-schema
 
 ## License
 
