@@ -1,0 +1,24 @@
+{
+  "name": "yup-of-json-omppye-dev",
+  "version": "0.1.0",
+  "scripts": {
+    "mel-watch": "mel --watch",
+    "webpack": "webpack serve"
+  },
+  "author": "Weslen Guerreiro <omppye@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "reason-react": "^0.9.1",
+    "yup-of-json": "1.1.8"
+  },
+  "devDependencies": {
+    "css-loader": "^5.1.3",
+    "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.27.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
