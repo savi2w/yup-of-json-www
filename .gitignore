@@ -1,0 +1,5 @@
+/_build
+/.merlin
+/build
+/node_modules
+/src/**/*.js

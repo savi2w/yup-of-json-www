@@ -1,0 +1,614 @@
+
+(subdir node_modules/reason-react/src
+(dirs :standard legacy)
+(rule
+(targets  React.re.pp.ml)
+ (deps (:inputs  React.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  React.ast)
+ (deps (:inputs  React.re.pp.ml)  ../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  React.d)
+ (deps (:inputs  .././src/React.ast) )
+(action (run meldep  -root-dir ../../.. -p reason-react -proj-dir ..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  React.cmj React.cmi React.cmt React.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only React.bs.js)))(deps (:inputs  React.ast)  (include React.d) ../bsconfig.json)
+(action
+  (run melc -I legacy -I .  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src:.bs.js -o React.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOM.re.pp.ml)
+ (deps (:inputs  ReactDOM.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOM.ast)
+ (deps (:inputs  ReactDOM.re.pp.ml)  ../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOM.d)
+ (deps (:inputs  .././src/ReactDOM.ast) )
+(action (run meldep  -root-dir ../../.. -p reason-react -proj-dir ..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOM.cmj ReactDOM.cmi ReactDOM.cmt ReactDOM.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReactDOM.bs.js)))(deps (:inputs  ReactDOM.ast)  (include ReactDOM.d) ../bsconfig.json)
+(action
+  (run melc -I legacy -I .  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src:.bs.js -o ReactDOM.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEvent.re.pp.ml)
+ (deps (:inputs  ReactEvent.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEvent.ast)
+ (deps (:inputs  ReactEvent.re.pp.ml)  ../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEvent.d)
+ (deps (:inputs  .././src/ReactEvent.ast .././src/ReactEvent.iast) )
+(action (run meldep  -root-dir ../../.. -p reason-react -proj-dir ..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEvent.rei.pp.mli)
+ (deps (:inputs  ReactEvent.rei) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEvent.iast)
+ (deps (:inputs  ReactEvent.rei.pp.mli) )
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEvent.cmi ReactEvent.cmti)
+ (alias mel)
+ (deps (:inputs  ReactEvent.iast)  (include ReactEvent.d) ../bsconfig.json)
+(action
+  (run melc -I legacy -I .  -bs-no-version-header  -w a -o ReactEvent.cmi %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEvent.cmj ReactEvent.cmt ReactEvent.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReactEvent.bs.js)))(deps (:inputs  ReactEvent.ast)  ReactEvent.cmi (include ReactEvent.d) ../bsconfig.json)
+(action
+  (run melc -bs-read-cmi -I legacy -I .  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src:.bs.js -o ReactEvent.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMStyle.re.pp.ml)
+ (deps (:inputs  ReactDOMStyle.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMStyle.ast)
+ (deps (:inputs  ReactDOMStyle.re.pp.ml)  ../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMStyle.d)
+ (deps (:inputs  .././src/ReactDOMStyle.ast) )
+(action (run meldep  -root-dir ../../.. -p reason-react -proj-dir ..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMStyle.cmj ReactDOMStyle.cmi ReactDOMStyle.cmt ReactDOMStyle.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReactDOMStyle.bs.js)))(deps (:inputs  ReactDOMStyle.ast)  (include ReactDOMStyle.d) ../bsconfig.json)
+(action
+  (run melc -I legacy -I .  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src:.bs.js -o ReactDOMStyle.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMServer.re.pp.ml)
+ (deps (:inputs  ReactDOMServer.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMServer.ast)
+ (deps (:inputs  ReactDOMServer.re.pp.ml)  ../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMServer.d)
+ (deps (:inputs  .././src/ReactDOMServer.ast) )
+(action (run meldep  -root-dir ../../.. -p reason-react -proj-dir ..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMServer.cmj ReactDOMServer.cmi ReactDOMServer.cmt ReactDOMServer.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReactDOMServer.bs.js)))(deps (:inputs  ReactDOMServer.ast)  (include ReactDOMServer.d) ../bsconfig.json)
+(action
+  (run melc -I legacy -I .  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src:.bs.js -o ReactDOMServer.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactTestUtils.re.pp.ml)
+ (deps (:inputs  ReactTestUtils.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactTestUtils.ast)
+ (deps (:inputs  ReactTestUtils.re.pp.ml)  ../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactTestUtils.d)
+ (deps (:inputs  .././src/ReactTestUtils.ast .././src/ReactTestUtils.iast) )
+(action (run meldep  -root-dir ../../.. -p reason-react -proj-dir ..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactTestUtils.rei.pp.mli)
+ (deps (:inputs  ReactTestUtils.rei) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactTestUtils.iast)
+ (deps (:inputs  ReactTestUtils.rei.pp.mli) )
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactTestUtils.cmi ReactTestUtils.cmti)
+ (alias mel)
+ (deps (:inputs  ReactTestUtils.iast)  (include ReactTestUtils.d) ../bsconfig.json)
+(action
+  (run melc -I legacy -I .  -bs-no-version-header  -w a -o ReactTestUtils.cmi %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactTestUtils.cmj ReactTestUtils.cmt ReactTestUtils.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReactTestUtils.bs.js)))(deps (:inputs  ReactTestUtils.ast)  ReactTestUtils.cmi (include ReactTestUtils.d) ../bsconfig.json)
+(action
+  (run melc -bs-read-cmi -I legacy -I .  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src:.bs.js -o ReactTestUtils.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactRouter.re.pp.ml)
+ (deps (:inputs  ReasonReactRouter.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactRouter.ast)
+ (deps (:inputs  ReasonReactRouter.re.pp.ml)  ../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactRouter.d)
+ (deps (:inputs  .././src/ReasonReactRouter.ast .././src/ReasonReactRouter.iast) )
+(action (run meldep  -root-dir ../../.. -p reason-react -proj-dir ..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactRouter.rei.pp.mli)
+ (deps (:inputs  ReasonReactRouter.rei) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactRouter.iast)
+ (deps (:inputs  ReasonReactRouter.rei.pp.mli) )
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactRouter.cmi ReasonReactRouter.cmti)
+ (alias mel)
+ (deps (:inputs  ReasonReactRouter.iast)  (include ReasonReactRouter.d) ../bsconfig.json)
+(action
+  (run melc -I legacy -I .  -bs-no-version-header  -w a -o ReasonReactRouter.cmi %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactRouter.cmj ReasonReactRouter.cmt ReasonReactRouter.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReasonReactRouter.bs.js)))(deps (:inputs  ReasonReactRouter.ast)  ReasonReactRouter.cmi (include ReasonReactRouter.d) ../bsconfig.json)
+(action
+  (run melc -bs-read-cmi -I legacy -I .  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src:.bs.js -o ReasonReactRouter.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactErrorBoundary.re.pp.ml)
+ (deps (:inputs  ReasonReactErrorBoundary.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactErrorBoundary.ast)
+ (deps (:inputs  ReasonReactErrorBoundary.re.pp.ml)  ../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactErrorBoundary.d)
+ (deps (:inputs  .././src/ReasonReactErrorBoundary.ast .././src/ReasonReactErrorBoundary.iast) )
+(action (run meldep  -root-dir ../../.. -p reason-react -proj-dir ..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactErrorBoundary.rei.pp.mli)
+ (deps (:inputs  ReasonReactErrorBoundary.rei) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactErrorBoundary.iast)
+ (deps (:inputs  ReasonReactErrorBoundary.rei.pp.mli) )
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactErrorBoundary.cmi ReasonReactErrorBoundary.cmti)
+ (alias mel)
+ (deps (:inputs  ReasonReactErrorBoundary.iast)  (include ReasonReactErrorBoundary.d) ../bsconfig.json)
+(action
+  (run melc -I legacy -I .  -bs-no-version-header  -w a -o ReasonReactErrorBoundary.cmi %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactErrorBoundary.cmj ReasonReactErrorBoundary.cmt ReasonReactErrorBoundary.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReasonReactErrorBoundary.bs.js)))(deps (:inputs  ReasonReactErrorBoundary.ast)  ReasonReactErrorBoundary.cmi (include ReasonReactErrorBoundary.d) ../bsconfig.json)
+(action
+  (run melc -bs-read-cmi -I legacy -I .  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src:.bs.js -o ReasonReactErrorBoundary.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ )
+(subdir node_modules/reason-react/src/legacy
+(rule
+(targets  ReactDOMRe.re.pp.ml)
+ (deps (:inputs  ReactDOMRe.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMRe.ast)
+ (deps (:inputs  ReactDOMRe.re.pp.ml)  ../../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMRe.d)
+ (deps (:inputs  ../.././src/legacy/ReactDOMRe.ast) )
+(action (run meldep  -root-dir ../../../.. -p reason-react -proj-dir ../..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMRe.cmj ReactDOMRe.cmi ReactDOMRe.cmt ReactDOMRe.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReactDOMRe.bs.js)))(deps (:inputs  ReactDOMRe.ast)  (include ReactDOMRe.d) ../../bsconfig.json)
+(action
+  (run melc -I . -I ..  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src/legacy:.bs.js -o ReactDOMRe.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReact.re.pp.ml)
+ (deps (:inputs  ReasonReact.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReact.ast)
+ (deps (:inputs  ReasonReact.re.pp.ml)  ../../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReact.d)
+ (deps (:inputs  ../.././src/legacy/ReasonReact.ast ../.././src/legacy/ReasonReact.iast) )
+(action (run meldep  -root-dir ../../../.. -p reason-react -proj-dir ../..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReact.rei.pp.mli)
+ (deps (:inputs  ReasonReact.rei) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReact.iast)
+ (deps (:inputs  ReasonReact.rei.pp.mli) )
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReact.cmi ReasonReact.cmti)
+ (alias mel)
+ (deps (:inputs  ReasonReact.iast)  (include ReasonReact.d) ../../bsconfig.json)
+(action
+  (run melc -I . -I ..  -bs-no-version-header  -w a -o ReasonReact.cmi %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReact.cmj ReasonReact.cmt ReasonReact.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReasonReact.bs.js)))(deps (:inputs  ReasonReact.ast)  ReasonReact.cmi (include ReasonReact.d) ../../bsconfig.json)
+(action
+  (run melc -bs-read-cmi -I . -I ..  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src/legacy:.bs.js -o ReasonReact.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEventRe.re.pp.ml)
+ (deps (:inputs  ReactEventRe.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEventRe.ast)
+ (deps (:inputs  ReactEventRe.re.pp.ml)  ../../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEventRe.d)
+ (deps (:inputs  ../.././src/legacy/ReactEventRe.ast ../.././src/legacy/ReactEventRe.iast) )
+(action (run meldep  -root-dir ../../../.. -p reason-react -proj-dir ../..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEventRe.rei.pp.mli)
+ (deps (:inputs  ReactEventRe.rei) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEventRe.iast)
+ (deps (:inputs  ReactEventRe.rei.pp.mli) )
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEventRe.cmi ReactEventRe.cmti)
+ (alias mel)
+ (deps (:inputs  ReactEventRe.iast)  (include ReactEventRe.d) ../../bsconfig.json)
+(action
+  (run melc -I . -I ..  -bs-no-version-header  -w a -o ReactEventRe.cmi %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactEventRe.cmj ReactEventRe.cmt ReactEventRe.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReactEventRe.bs.js)))(deps (:inputs  ReactEventRe.ast)  ReactEventRe.cmi (include ReactEventRe.d) ../../bsconfig.json)
+(action
+  (run melc -bs-read-cmi -I . -I ..  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src/legacy:.bs.js -o ReactEventRe.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMServerRe.re.pp.ml)
+ (deps (:inputs  ReactDOMServerRe.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMServerRe.ast)
+ (deps (:inputs  ReactDOMServerRe.re.pp.ml)  ../../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMServerRe.d)
+ (deps (:inputs  ../.././src/legacy/ReactDOMServerRe.ast) )
+(action (run meldep  -root-dir ../../../.. -p reason-react -proj-dir ../..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReactDOMServerRe.cmj ReactDOMServerRe.cmi ReactDOMServerRe.cmt ReactDOMServerRe.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReactDOMServerRe.bs.js)))(deps (:inputs  ReactDOMServerRe.ast)  (include ReactDOMServerRe.d) ../../bsconfig.json)
+(action
+  (run melc -I . -I ..  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src/legacy:.bs.js -o ReactDOMServerRe.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactCompat.re.pp.ml)
+ (deps (:inputs  ReasonReactCompat.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactCompat.ast)
+ (deps (:inputs  ReasonReactCompat.re.pp.ml)  ../../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactCompat.d)
+ (deps (:inputs  ../.././src/legacy/ReasonReactCompat.ast ../.././src/legacy/ReasonReactCompat.iast) )
+(action (run meldep  -root-dir ../../../.. -p reason-react -proj-dir ../..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactCompat.rei.pp.mli)
+ (deps (:inputs  ReasonReactCompat.rei) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactCompat.iast)
+ (deps (:inputs  ReasonReactCompat.rei.pp.mli) )
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactCompat.cmi ReasonReactCompat.cmti)
+ (alias mel)
+ (deps (:inputs  ReasonReactCompat.iast)  (include ReasonReactCompat.d) ../../bsconfig.json)
+(action
+  (run melc -I . -I ..  -bs-no-version-header  -w a -o ReasonReactCompat.cmi %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactCompat.cmj ReasonReactCompat.cmt ReasonReactCompat.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReasonReactCompat.bs.js)))(deps (:inputs  ReasonReactCompat.ast)  ReasonReactCompat.cmi (include ReasonReactCompat.d) ../../bsconfig.json)
+(action
+  (run melc -bs-read-cmi -I . -I ..  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src/legacy:.bs.js -o ReasonReactCompat.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactOptimizedCreateClass.re.pp.ml)
+ (deps (:inputs  ReasonReactOptimizedCreateClass.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactOptimizedCreateClass.ast)
+ (deps (:inputs  ReasonReactOptimizedCreateClass.re.pp.ml)  ../../../../.melange.eobjs/node_modules/reason-react/.bsbuild)
+(action
+ (run melc  -w a -bs-jsx 3 -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactOptimizedCreateClass.d)
+ (deps (:inputs  ../.././src/legacy/ReasonReactOptimizedCreateClass.ast) )
+(action (run meldep  -root-dir ../../../.. -p reason-react -proj-dir ../..  %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  ReasonReactOptimizedCreateClass.cmj ReasonReactOptimizedCreateClass.cmi ReasonReactOptimizedCreateClass.cmt ReasonReactOptimizedCreateClass.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only ReasonReactOptimizedCreateClass.bs.js)))(deps (:inputs  ReasonReactOptimizedCreateClass.ast)  (include ReasonReactOptimizedCreateClass.d) ../../bsconfig.json)
+(action
+  (run melc -I . -I ..  -bs-no-version-header  -w a -bs-package-name reason-react -bs-package-output commonjs:./src/legacy:.bs.js -o ReasonReactOptimizedCreateClass.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ )
+
+(subdir .melange.eobjs/node_modules/reason-react
+(rule (write-file .bsbuild MTQKUmVhY3QKUmVhY3RET00KUmVhY3RET01SZQpSZWFjdEV2ZW50ClJlYXNvblJlYWN0ClJlYWN0RXZlbnRSZQpSZWFjdERPTVN0eWxlClJlYWN0RE9NU2VydmVyClJlYWN0VGVzdFV0aWxzClJlYWN0RE9NU2VydmVyUmUKUmVhc29uUmVhY3RDb21wYXQKUmVhc29uUmVhY3RSb3V0ZXIKUmVhc29uUmVhY3RFcnJvckJvdW5kYXJ5ClJlYXNvblJlYWN0T3B0aW1pemVkQ3JlYXRlQ2xhc3MKLi9zcmMJLi9zcmMvbGVnYWN5CQoxAQEDAQMDAQEBAwMBAQMKMAo=))
+)
+
+(subdir src
+(rule
+(targets  App.re.pp.ml)
+ (deps (:inputs  App.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  App.ast)
+ (deps (:inputs  App.re.pp.ml)  ../.melange.eobjs/.bsbuild)
+(action
+ (run melc  -bs-jsx 3 -bs-super-errors -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  App.d)
+ (deps (:inputs  .././src/App.ast) )
+(action (run meldep  -root-dir .. -p yup-of-json-www -proj-dir ..  -bs-ns YupOfJsonsavi2wDev %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  App-YupOfJsonsavi2wDev.cmj App-YupOfJsonsavi2wDev.cmi App-YupOfJsonsavi2wDev.cmt App.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only App.bs.js)))(deps (:inputs  App.ast)  (include App.d) ../bsconfig.json ../.melange.eobjs/YupOfJsonsavi2wDev.cmi(alias ../node_modules/reason-react/src/mel)(alias ../node_modules/reason-react/src/legacy/mel))
+(action
+  (run melc -bs-ns YupOfJsonsavi2wDev -I . -I ../.melange.eobjs -I ../node_modules/reason-react/src -I ../node_modules/reason-react/src/legacy -bs-super-errors -bs-no-version-header  -bs-package-name yup-of-json-www -bs-package-output commonjs:./src:.bs.js -o App-YupOfJsonsavi2wDev.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  Index.re.pp.ml)
+ (deps (:inputs  Index.re) )
+(action
+  (with-stdout-to %{targets}
+   (run refmt --print=binary %{inputs})))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  Index.ast)
+ (deps (:inputs  Index.re.pp.ml)  ../.melange.eobjs/.bsbuild)
+(action
+ (run melc  -bs-jsx 3 -bs-super-errors -bs-no-version-header -absname -bs-ast -o %{targets} %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  Index.d)
+ (deps (:inputs  .././src/Index.ast) )
+(action (run meldep  -root-dir .. -p yup-of-json-www -proj-dir ..  -bs-ns YupOfJsonsavi2wDev %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ (rule
+(targets  Index-YupOfJsonsavi2wDev.cmj Index-YupOfJsonsavi2wDev.cmi Index-YupOfJsonsavi2wDev.cmt Index.bs.js)
+ (alias mel)
+ (mode (promote (until-clean) (only Index.bs.js)))(deps (:inputs  Index.ast)  (include Index.d) ../bsconfig.json ../.melange.eobjs/YupOfJsonsavi2wDev.cmi(alias ../node_modules/reason-react/src/mel)(alias ../node_modules/reason-react/src/legacy/mel))
+(action
+  (run melc -bs-ns YupOfJsonsavi2wDev -I . -I ../.melange.eobjs -I ../node_modules/reason-react/src -I ../node_modules/reason-react/src/legacy -bs-super-errors -bs-no-version-header  -bs-package-name yup-of-json-www -bs-package-output commonjs:./src:.bs.js -o Index-YupOfJsonsavi2wDev.cmj %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ )
+
+(subdir .melange.eobjs
+(rule (with-stdout-to YupOfJsonsavi2wDev.mlmap (run echo "App
+Index
+")))(rule
+(targets  YupOfJsonsavi2wDev.cmi)
+ (deps (:inputs  YupOfJsonsavi2wDev.mlmap) )
+(action (run melc -w -49 -color always -no-alias-deps %{inputs}))
+(enabled_if %{bin-available:melc}) )
+ 
+(rule (write-file .bsbuild MgpBcHAKSW5kZXgKLi9zcmMJCjEBAQowCg==))
+(rule (write-file .sourcedirs.json "{ \"dirs\" : [ \"/Users/savi2w/repos/yup-of-json-www/node_modules/reason-react/./src\" , \"/Users/savi2w/repos/yup-of-json-www/node_modules/reason-react/./src/legacy\" , \"/Users/savi2w/repos/yup-of-json-www/./src\" ] , \"pkgs\" : [ [ \"reason-react\" , \"/Users/savi2w/repos/yup-of-json-www/node_modules/reason-react\" ] ] , \"generated\" : [] }")) 
+)
+
+(data_only_dirs node_modules  .melange.eobjs)
+(alias (name mel) (deps .melange.eobjs/.sourcedirs.json (alias node_modules/reason-react/src/mel)(alias node_modules/reason-react/src/legacy/mel)))
+
+(rule (targets (dir melange.commonjs))
+ (alias UNSTABLE_mel)
+(action (chdir %{targets} (progn 
+(run mkdir -p src)
+(run cp %{sources-0} src) (system "rm -f src/*.{ast,cm*,d}")
+ (run rm -f src/App.bs.js)
+ (run melc -bs-ns YupOfJsonsavi2wDev -I ../../.melange.eobjs -I ../src -I ../node_modules/reason-react/src -I ../node_modules/reason-react/src/legacy -bs-package-name yup-of-json-www -bs-module-type commonjs ../src/App-YupOfJsonsavi2wDev.cmj -o src/App.bs.js)
+ (run rm -f src/Index.bs.js)
+ (run melc -bs-ns YupOfJsonsavi2wDev -I ../../.melange.eobjs -I ../src -I ../node_modules/reason-react/src -I ../node_modules/reason-react/src/legacy -bs-package-name yup-of-json-www -bs-module-type commonjs ../src/Index-YupOfJsonsavi2wDev.cmj -o src/Index.bs.js)
+(run mkdir -p node_modules/reason-react/src)
+(run cp %{sources-1} node_modules/reason-react/src) (system "rm -f node_modules/reason-react/src/*.{ast,cm*,d}")
+ (run rm -f node_modules/reason-react/src/React.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/React.cmj -o node_modules/reason-react/src/React.bs.js)
+ (run rm -f node_modules/reason-react/src/ReactDOM.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/ReactDOM.cmj -o node_modules/reason-react/src/ReactDOM.bs.js)
+ (run rm -f node_modules/reason-react/src/ReactEvent.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/ReactEvent.cmj -o node_modules/reason-react/src/ReactEvent.bs.js)
+ (run rm -f node_modules/reason-react/src/ReactDOMStyle.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/ReactDOMStyle.cmj -o node_modules/reason-react/src/ReactDOMStyle.bs.js)
+ (run rm -f node_modules/reason-react/src/ReactDOMServer.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/ReactDOMServer.cmj -o node_modules/reason-react/src/ReactDOMServer.bs.js)
+ (run rm -f node_modules/reason-react/src/ReactTestUtils.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/ReactTestUtils.cmj -o node_modules/reason-react/src/ReactTestUtils.bs.js)
+ (run rm -f node_modules/reason-react/src/ReasonReactRouter.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/ReasonReactRouter.cmj -o node_modules/reason-react/src/ReasonReactRouter.bs.js)
+ (run rm -f node_modules/reason-react/src/ReasonReactErrorBoundary.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/ReasonReactErrorBoundary.cmj -o node_modules/reason-react/src/ReasonReactErrorBoundary.bs.js)
+(run mkdir -p node_modules/reason-react/src/legacy)
+(run cp %{sources-2} node_modules/reason-react/src/legacy) (system "rm -f node_modules/reason-react/src/legacy/*.{ast,cm*,d}")
+ (run rm -f node_modules/reason-react/src/legacy/ReactDOMRe.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/legacy/ReactDOMRe.cmj -o node_modules/reason-react/src/legacy/ReactDOMRe.bs.js)
+ (run rm -f node_modules/reason-react/src/legacy/ReasonReact.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/legacy/ReasonReact.cmj -o node_modules/reason-react/src/legacy/ReasonReact.bs.js)
+ (run rm -f node_modules/reason-react/src/legacy/ReactEventRe.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/legacy/ReactEventRe.cmj -o node_modules/reason-react/src/legacy/ReactEventRe.bs.js)
+ (run rm -f node_modules/reason-react/src/legacy/ReactDOMServerRe.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/legacy/ReactDOMServerRe.cmj -o node_modules/reason-react/src/legacy/ReactDOMServerRe.bs.js)
+ (run rm -f node_modules/reason-react/src/legacy/ReasonReactCompat.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/legacy/ReasonReactCompat.cmj -o node_modules/reason-react/src/legacy/ReasonReactCompat.bs.js)
+ (run rm -f node_modules/reason-react/src/legacy/ReasonReactOptimizedCreateClass.bs.js)
+ (run melc -I ../node_modules/reason-react/src/legacy -I ../node_modules/reason-react/src  -bs-package-name reason-react -bs-module-type commonjs ../node_modules/reason-react/src/legacy/ReasonReactOptimizedCreateClass.cmj -o node_modules/reason-react/src/legacy/ReasonReactOptimizedCreateClass.bs.js)
+(run cp -f ../bsconfig.json .) ))) (deps (:sources-0 (glob_files src/*))
+(:sources-1 (glob_files node_modules/reason-react/src/*))
+(:sources-2 (glob_files node_modules/reason-react/src/legacy/*))))
