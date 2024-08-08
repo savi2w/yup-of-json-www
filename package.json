@@ -1,0 +1,24 @@
+{
+  "name": "yup-of-json-www",
+  "version": "1.0.0",
+  "scripts": {
+    "mel-watch": "mel --watch",
+    "webpack": "webpack serve"
+  },
+  "author": "savi2w",
+  "license": "MIT",
+  "dependencies": {
+    "@savi2w/yup-of-json": "1.0.0",
+    "react": "^16.8.1",
+    "react-dom": "^16.8.1",
+    "reason-react": "^0.9.1"
+  },
+  "devDependencies": {
+    "css-loader": "^5.1.3",
+    "html-webpack-plugin": "^5.3.1",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.27.2",
+    "webpack-cli": "^4.5.0",
+    "webpack-dev-server": "^3.11.2"
+  }
+}
